@@ -29,5 +29,15 @@ namespace OnlineStore.Models
         public  bool ClothingProduct(Product product) => product.Category == "Clothing" && product.Price < 50;
 
 
+        public void PrintReport(List<Product> products, Action<Product> action)
+        {
+            foreach (Product product in products)
+            {
+                action(product);
+            }
+        }
+        public void ShortReport(Product product) => Console.WriteLine($"{product.Name} : {product.Price}");
+        public void DetailedReport(Product product) => Console.WriteLine($" [{product.Category}] {product.Name} | Price: ${product.Price} | Stock: {product.Stock} \r\n");
+
     }
 }
