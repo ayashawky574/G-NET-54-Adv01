@@ -53,11 +53,27 @@ namespace OnlineStore
 
             #region Custom Report Generator
             //3.1  Print Reports 
-            Console.WriteLine("---- Short Report ----");
-            productServices.PrintReport(catalog, productServices.ShortReport);
-            Console.WriteLine();
-            Console.WriteLine("---- Detailed Report ----");
-            productServices.PrintReport(catalog, productServices.DetailedReport);
+            //Console.WriteLine("---- Short Report ----");
+            //productServices.PrintReport(catalog, productServices.ShortReport);
+            //Console.WriteLine();
+            //Console.WriteLine("---- Detailed Report ----");
+            //productServices.PrintReport(catalog, productServices.DetailedReport);
+
+            //------------------------------------------------------------------------------
+            //3.2.Transform Products
+            //Console.WriteLine("----- Summary List ----");
+            //List<string> products = productServices.TransformProducts(catalog, productServices.Summary);
+            //foreach (var product in products)
+            //{
+            //    Console.WriteLine(product);
+            //}
+            //Console.WriteLine();
+            //Console.WriteLine("---- Products Label ----");
+            //List<string> productslabel = productServices.TransformProducts(catalog, productServices.Label);
+            //foreach (var product in productslabel)
+            //{
+            //    Console.WriteLine(product);
+            //}
             #endregion
         }
     }

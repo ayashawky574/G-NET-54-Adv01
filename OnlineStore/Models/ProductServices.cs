@@ -39,5 +39,17 @@ namespace OnlineStore.Models
         public void ShortReport(Product product) => Console.WriteLine($"{product.Name} : {product.Price}");
         public void DetailedReport(Product product) => Console.WriteLine($" [{product.Category}] {product.Name} | Price: ${product.Price} | Stock: {product.Stock} \r\n");
 
+
+        public List<string> TransformProducts(List<Product> products , Func<Product , string> transform)
+        {
+            List<string> list = new();
+            foreach (var product in products)
+            {
+                list.Add(transform(product));
+            }
+            return list;
+        }
+        public string Summary(Product product) => $"{product.Name} $({product.Price})";
+        public string Label(Product product) => product.Price >100 ? $"{product.Name} : Expensive!" : $"{product.Name} : Affordable";
     }
 }
