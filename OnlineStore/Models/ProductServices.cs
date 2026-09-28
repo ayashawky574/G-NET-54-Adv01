@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
+using static System.Net.WebRequestMethods;
 
 namespace OnlineStore.Models
 {
@@ -51,5 +52,18 @@ namespace OnlineStore.Models
         }
         public string Summary(Product product) => $"{product.Name} $({product.Price})";
         public string Label(Product product) => product.Price >100 ? $"{product.Name} : Expensive!" : $"{product.Name} : Affordable";
+
+        //3.3. Filter Products
+        public List<Product> FilterProduct(List<Product> products , Predicate<Product> filter)
+        {
+            List<Product> list = new();
+            foreach (var product in products)
+            {
+                if (filter(product))
+                    list.Add(product);
+            }
+            return list;
+        }
+        public bool LowStockAlert(Product product) => product.Stock < 20;
     }
 }

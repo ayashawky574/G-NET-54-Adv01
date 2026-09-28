@@ -74,6 +74,14 @@ namespace OnlineStore
             //{
             //    Console.WriteLine(product);
             //}
+
+            //3.3.Filter Products
+            //Console.WriteLine("----- low Stock Alert ----");
+            //List<Product> products = productServices.FilterProduct(catalog, productServices.LowStockAlert);
+            //foreach (var product in products)
+            //{
+            //    Console.WriteLine($"[LOW STOCK] {product.Name}: only {product.Stock} left!");
+            //}
             #endregion
         }
     }
