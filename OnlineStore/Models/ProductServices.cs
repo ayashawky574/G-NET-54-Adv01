@@ -1,10 +1,69 @@
-﻿using System;
+﻿using OnlineStore.Delegate;
+using System;
 using System.Collections.Generic;
 using System.Text;
+using static System.Net.WebRequestMethods;
 
 namespace OnlineStore.Models
 {
-    internal class ProductServices
+    public class ProductServices
     {
+        public void PrintProduct(Product product)
+        {
+            Console.WriteLine($"{product.Name} : ${product.Price}({product.Stock})");
+        }
+        public  List<Product> SearchProducts(List<Product> products, SearchFilter filter)
+        {
+            List<Product> list = new();
+            foreach (Product p in products)
+            {
+                if (filter(p))
+                    list.Add(p);
+            }
+            return list;
+        }
+        public bool ElectronicProducts(Product product) => product.Category == "Electronics";
+
+        public  bool CheapProducts(Product product) => product.Price < 50;
+
+        public  bool StockProducts(Product product) => product.Stock > 0;
+        public  bool ClothingProduct(Product product) => product.Category == "Clothing" && product.Price < 50;
+
+
+        public void PrintReport(List<Product> products, Action<Product> action)
+        {
+            foreach (Product product in products)
+            {
+                action(product);
+            }
+        }
+        public void ShortReport(Product product) => Console.WriteLine($"{product.Name} : {product.Price}");
+        public void DetailedReport(Product product) => Console.WriteLine($" [{product.Category}] {product.Name} | Price: ${product.Price} | Stock: {product.Stock} \r\n");
+
+
+        public List<string> TransformProducts(List<Product> products , Func<Product , string> transform)
+        {
+            List<string> list = new();
+            foreach (var product in products)
+            {
+                list.Add(transform(product));
+            }
+            return list;
+        }
+        public string Summary(Product product) => $"{product.Name} $({product.Price})";
+        public string Label(Product product) => product.Price >100 ? $"{product.Name} : Expensive!" : $"{product.Name} : Affordable";
+
+        //3.3. Filter Products
+        public List<Product> FilterProduct(List<Product> products , Predicate<Product> filter)
+        {
+            List<Product> list = new();
+            foreach (var product in products)
+            {
+                if (filter(product))
+                    list.Add(product);
+            }
+            return list;
+        }
+        public bool LowStockAlert(Product product) => product.Stock < 20;
     }
 }
