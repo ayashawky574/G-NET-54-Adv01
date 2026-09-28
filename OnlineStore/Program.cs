@@ -83,6 +83,10 @@ namespace OnlineStore
             //    Console.WriteLine($"[LOW STOCK] {product.Name}: only {product.Stock} left!");
             //}
             #endregion
+
+            // use Action Delegate for method with no return type
+            //use func Delegate for method with return type take one or more parameter
+            // use predicate Delegate for mehtod with bool return type and only one parameter
         }
     }
 }
